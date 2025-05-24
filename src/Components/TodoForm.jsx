@@ -17,6 +17,12 @@ export default function TodoForm() {
     setText("");
   };
 
+  const handleClear = () => {
+    if (confirm("Are you sure you want to clear all tasks?")) {
+      dispatch({ type: "CLEAR_TODOS" });
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
       <input
@@ -28,6 +34,14 @@ export default function TodoForm() {
       />
       <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg">
         Add
+      </button>
+
+       <button
+        type="button"
+        onClick={handleClear}
+        className="px-4 py-2 bg-red-400 text-white rounded-lg"
+      >
+        Clear All
       </button>
     </form>
   );
